@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\THIS PC\\OneDrive\\Desktop\\MidAssignment\\backEnd\\backEnd.csproj": {}
+    "C:\\Users\\THIS PC\\OneDrive\\Desktop\\midAssignment\\backEnd\\backEnd.csproj": {}
   },
   "projects": {
-    "C:\\Users\\THIS PC\\OneDrive\\Desktop\\MidAssignment\\backEnd\\backEnd.csproj": {
+    "C:\\Users\\THIS PC\\OneDrive\\Desktop\\midAssignment\\backEnd\\backEnd.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\MidAssignment\\backEnd\\backEnd.csproj",
+        "projectUniqueName": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\midAssignment\\backEnd\\backEnd.csproj",
         "projectName": "backEnd",
-        "projectPath": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\MidAssignment\\backEnd\\backEnd.csproj",
+        "projectPath": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\midAssignment\\backEnd\\backEnd.csproj",
         "packagesPath": "C:\\Users\\THIS PC\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\MidAssignment\\backEnd\\obj\\",
+        "outputPath": "C:\\Users\\THIS PC\\OneDrive\\Desktop\\midAssignment\\backEnd\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\THIS PC\\AppData\\Roaming\\NuGet\\NuGet.Config"

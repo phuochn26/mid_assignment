@@ -33,7 +33,6 @@ namespace backEnd
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IBookBorrowingRequestService, BookBorrowingRequestService>();
-            services.AddTransient<IBookBorrowingRequestDetailService, BookBorrowingRequestDetailService>();
             services.AddDbContext<DataContext>();
         }
 

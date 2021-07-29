@@ -23,14 +23,14 @@ namespace backEnd.Services.Implemention
         {
             return _dataContext.BookBorrowingRequests.Where(s => s.RequestId == id).FirstOrDefault();
         }
-        public void CreateRequest(BookBorrowingRequestDTO request)
+        public bool CreateRequest(BookBorrowingRequestDTO request)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
             {
                 var newRequest = new BookBorrowingRequest()
                 {
-                    RequestedDate = request.RequestedDate,
+                    RequestedDate = DateTime.Now,
                     BorrowerId = request.BorrowerId,
                     status = request.status,
                     DetailId = request.DetailId
@@ -38,14 +38,15 @@ namespace backEnd.Services.Implemention
                 _dataContext.BookBorrowingRequests.Add(newRequest);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void UpdateRequest(BookBorrowingRequestDTO request, int id)
+        public bool UpdateRequest(BookBorrowingRequestDTO request, int id)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -57,14 +58,15 @@ namespace backEnd.Services.Implemention
 
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void DeleteRequest(int id)
+        public bool DeleteRequest(int id)
         {
             
             using var transation = _dataContext.Database.BeginTransaction();
@@ -74,10 +76,11 @@ namespace backEnd.Services.Implemention
                 _dataContext.BookBorrowingRequests.Remove(request);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
     }

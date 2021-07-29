@@ -26,22 +26,32 @@ namespace backEnd.Controllers
             return _requestService.GetRequestById(id);
         }
         [HttpPost]
-        public List<BookBorrowingRequest> Create(BookBorrowingRequestDTO request)
+        public IActionResult Create(BookBorrowingRequestDTO request)
         {
-            _requestService.CreateRequest(request);
-            return _requestService.GetRequests();
+            if (_requestService.CreateRequest(request))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpPut("{id}")]
-        public List<BookBorrowingRequest> Update(BookBorrowingRequestDTO request, int id)
+        public IActionResult Update(BookBorrowingRequestDTO request, int id)
         {
-            _requestService.UpdateRequest(request, id);
-            return _requestService.GetRequests();
+            if (_requestService.DeleteRequest(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpDelete("{id}")]
-        public List<BookBorrowingRequest> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _requestService.DeleteRequest(id);
-            return _requestService.GetRequests();
+            if (_requestService.DeleteRequest(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
+            
         }
     }
 }

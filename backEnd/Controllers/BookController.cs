@@ -26,22 +26,32 @@ namespace backEnd.Controllers
             return _bookService.GetBookById(id);
         }
         [HttpPost]
-        public List<Book> Create(BookDTO book)
+        public IActionResult Create(BookDTO book)
         {
-            _bookService.CreateBook(book);
-            return _bookService.GetBooks();
+            if (_bookService.CreateBook(book))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpPut("{id}")]
-        public List<Book> Update(BookDTO book, int id)
+        public IActionResult Update(BookDTO book, int id)
         {
-            _bookService.UpdateBook(book, id);
-            return _bookService.GetBooks();
+
+            if (_bookService.UpdateBook(book, id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpDelete("{id}")]
-        public List<Book> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _bookService.DeleteBook(id);
-            return _bookService.GetBooks();
+            if (_bookService.DeleteBook(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }

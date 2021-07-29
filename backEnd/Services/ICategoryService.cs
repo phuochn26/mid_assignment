@@ -6,8 +6,8 @@ namespace backEnd.Services{
     public interface ICategoryService{
         List<Category> GetCategories();
         Category GetCategoryById(int id);
-        void CreateCategory(CategoryDTO category);
-        void UpdateCategory(CategoryDTO category, int id);
-        void DeleteCategory(int id);
+        bool CreateCategory(CategoryDTO category);
+        bool UpdateCategory(CategoryDTO category, int id);
+        bool DeleteCategory(int id);
     }
 }

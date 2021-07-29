@@ -23,7 +23,7 @@ namespace backEnd.Services.Implemention
         {
             return _dataContext.Categories.Where(s => s.CategoryId == id).FirstOrDefault();
         }
-        public void CreateCategory(CategoryDTO category)
+        public bool CreateCategory(CategoryDTO category)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -35,14 +35,15 @@ namespace backEnd.Services.Implemention
                 _dataContext.Categories.Add(newCategory);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void UpdateCategory(CategoryDTO category, int id)
+        public bool UpdateCategory(CategoryDTO category, int id)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -52,14 +53,15 @@ namespace backEnd.Services.Implemention
 
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void DeleteCategory(int id)
+        public bool DeleteCategory(int id)
         {
             
             using var transation = _dataContext.Database.BeginTransaction();
@@ -69,10 +71,11 @@ namespace backEnd.Services.Implemention
                 _dataContext.Categories.Remove(category);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
     }

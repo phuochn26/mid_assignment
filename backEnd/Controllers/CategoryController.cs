@@ -26,22 +26,31 @@ namespace backEnd.Controllers
             return _categoryService.GetCategoryById(id);
         }
         [HttpPost]
-        public List<Category> Create(CategoryDTO category)
+        public IActionResult Create(CategoryDTO category)
         {
-            _categoryService.CreateCategory(category);
-            return _categoryService.GetCategories();
+            if (_categoryService.CreateCategory(category))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpPut("{id}")]
-        public List<Category> Update(CategoryDTO category, int id)
+        public IActionResult Update(CategoryDTO category, int id)
         {
-            _categoryService.UpdateCategory(category, id);
-            return _categoryService.GetCategories();
+            if (_categoryService.UpdateCategory(category, id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpDelete("{id}")]
-        public List<Category> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _categoryService.DeleteCategory(id);
-            return _categoryService.GetCategories();
+            if (_categoryService.DeleteCategory(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }

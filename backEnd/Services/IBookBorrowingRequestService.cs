@@ -6,8 +6,8 @@ namespace backEnd.Services{
     public interface IBookBorrowingRequestService{
         List<BookBorrowingRequest> GetRequests();
         BookBorrowingRequest GetRequestById(int id);
-        void CreateRequest(BookBorrowingRequestDTO bookBorrowingRequest);
-        void UpdateRequest(BookBorrowingRequestDTO bookBorrowingRequest, int id);
-        void DeleteRequest(int id);
+        bool CreateRequest(BookBorrowingRequestDTO bookBorrowingRequest);
+        bool UpdateRequest(BookBorrowingRequestDTO bookBorrowingRequest, int id);
+        bool DeleteRequest(int id);
     }
 }

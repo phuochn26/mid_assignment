@@ -23,7 +23,7 @@ namespace backEnd.Services.Implemention
         {
             return _dataContext.Books.Where(s => s.BookId == id).FirstOrDefault();
         }
-        public void CreateBook(BookDTO book)
+        public bool CreateBook(BookDTO book)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -37,14 +37,15 @@ namespace backEnd.Services.Implemention
                 _dataContext.Books.Add(newBook);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void UpdateBook(BookDTO book, int id)
+        public bool UpdateBook(BookDTO book, int id)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -56,14 +57,15 @@ namespace backEnd.Services.Implemention
 
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void DeleteBook(int id)
+        public bool DeleteBook(int id)
         {
             
             using var transation = _dataContext.Database.BeginTransaction();
@@ -73,10 +75,11 @@ namespace backEnd.Services.Implemention
                 _dataContext.Books.Remove(book);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
     }

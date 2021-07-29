@@ -23,7 +23,7 @@ namespace backEnd.Services.Implemention
         {
             return _dataContext.Users.Where(s => s.UserId == id).FirstOrDefault();
         }
-        public void CreateUser(UserDTO user)
+        public bool CreateUser(UserDTO user)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -37,14 +37,15 @@ namespace backEnd.Services.Implemention
                 _dataContext.Users.Add(newUser);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void UpdateUser(UserDTO user, int id)
+        public bool UpdateUser(UserDTO user, int id)
         {
             using var transation = _dataContext.Database.BeginTransaction();
             try
@@ -55,14 +56,15 @@ namespace backEnd.Services.Implemention
 
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
 
-        public void DeleteUser(int id)
+        public bool DeleteUser(int id)
         {
             
             using var transation = _dataContext.Database.BeginTransaction();
@@ -72,10 +74,11 @@ namespace backEnd.Services.Implemention
                 _dataContext.Users.Remove(user);
                 _dataContext.SaveChanges();
                 transation.Commit();
+                return true;
             }
             catch(Exception)
             {
-                return;
+                return false;
             }
         }
     }

@@ -26,22 +26,33 @@ namespace backEnd.Controllers
             return _userService.GetUserById(id);
         }
         [HttpPost]
-        public List<User> Create(UserDTO user)
+        public IActionResult Create(UserDTO user)
         {
-            _userService.CreateUser(user);
-            return _userService.GetUsers();
+            if(user == null) return BadRequest();
+            if (_userService.CreateUser(user))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpPut("{id}")]
-        public List<User> Update(UserDTO user, int id)
+        public IActionResult Update(UserDTO user, int id)
         {
-            _userService.UpdateUser(user, id);
-            return _userService.GetUsers();
+            if (_userService.UpdateUser(user, id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
         [HttpDelete("{id}")]
-        public List<User> Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _userService.DeleteUser(id);
-            return _userService.GetUsers();
+            if(id == 0) return BadRequest();
+            if (_userService.DeleteUser(id))
+            {
+                return Ok();
+            }
+            return BadRequest();
         }
     }
 }
